@@ -7,7 +7,6 @@
 
 from scrapy import Item, Field
 
-
 class MzituItem(Item):
     """
     mzitu item

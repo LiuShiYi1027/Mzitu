@@ -8,7 +8,6 @@
 #     https://doc.scrapy.org/en/latest/topics/settings.html
 #     https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://doc.scrapy.org/en/latest/topics/spider-middleware.html
-
 BOT_NAME = 'Mzitu'
 
 SPIDER_MODULES = ['Mzitu.spiders']
@@ -91,9 +90,12 @@ ITEM_PIPELINES = {
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
-
-IMAGES_STORE = '/Users/liushiyi/Desktop/Spider/Mzitu/Pictures'
-
 # 30 days of delay for images expiration
 IMAGES_EXPIRES = 30
+
+# 图片存储路径
+IMAGES_STORE = 'D:\项目\爬虫\Mzitu\Pictures'
+# MongoDB 设置
+DB_URI = 'mongodb://localhost:27017'
+DB_NAME = 'mzitu'
 

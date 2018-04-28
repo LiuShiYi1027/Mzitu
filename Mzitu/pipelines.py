@@ -10,7 +10,7 @@ from scrapy.pipelines.images import ImagesPipeline
 from scrapy.exceptions import DropItem
 import pymongo
 import re
-
+from .settings import DB_NAME,DB_URI
 
 def strip(path):
     """
@@ -22,13 +22,17 @@ def strip(path):
 
 
 class MzituPipeline(object):
-
-    DB_URI = 'mongodb://localhost:27017'
-    DB_NAME = 'mzitu'
+    """
+    MzituPipeline将组图的相关信息存储到MongoDB数据库中，
+    数据库地址：DB_URI
+    数据库名称：DB_NAME
+    """
+    DB_URI = DB_URI
+    DB_NAME = DB_NAME
 
     def open_spider(self, spider):
         """
-        爬虫打开，建立与mongo的连接
+        爬虫打开，建立与mongoDB的连接
         :param spider:
         :return:
         """
@@ -57,8 +61,9 @@ class MzituPipeline(object):
 
 
 class MzituImagesPipeline(ImagesPipeline):
-
-
+    """
+    MzituImagesPipeline将图片存储到本地，其中以item['title']建立文件夹
+    """
     def file_path(self, request, response=None, info=None):
         """
         :param request: 每一个图片下载管道请求
